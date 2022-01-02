@@ -31,20 +31,20 @@ PRODUCT_PRIVATE_SEPOLICY_DIRS := \
     $(SEPOLICY_PATH)/qva/product/private
 
 ifneq (,$(filter sdm845 sdm710 sdm660 msm8937 msm8953 msm8996 msm8998, $(TARGET_BOARD_PLATFORM)))
-    BOARD_SEPOLICY_DIRS := \
-                 $(BOARD_SEPOLICY_DIRS) \
+    BOARD_VENDOR_SEPOLICY_DIRS := \
+                 $(BOARD_VENDOR_SEPOLICY_DIRS) \
                  $(SEPOLICY_PATH) \
                  $(SEPOLICY_PATH)/legacy/vendor/common/sysmonapp \
                  $(SEPOLICY_PATH)/legacy/vendor/ssg \
                  $(SEPOLICY_PATH)/legacy/vendor/common
 
     ifeq ($(TARGET_SEPOLICY_DIR),)
-      BOARD_SEPOLICY_DIRS += $(SEPOLICY_PATH)/legacy/vendor/$(TARGET_BOARD_PLATFORM)
+      BOARD_VENDOR_SEPOLICY_DIRS += $(SEPOLICY_PATH)/legacy/vendor/$(TARGET_BOARD_PLATFORM)
     else
-      BOARD_SEPOLICY_DIRS += $(SEPOLICY_PATH)/legacy/vendor/$(TARGET_SEPOLICY_DIR)
+      BOARD_VENDOR_SEPOLICY_DIRS += $(SEPOLICY_PATH)/legacy/vendor/$(TARGET_SEPOLICY_DIR)
     endif
     ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
-    BOARD_SEPOLICY_DIRS += $(SEPOLICY_PATH)/legacy/vendor/test
+    BOARD_VENDOR_SEPOLICY_DIRS += $(SEPOLICY_PATH)/legacy/vendor/test
     endif
 endif
 
